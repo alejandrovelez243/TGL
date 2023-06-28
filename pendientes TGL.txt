@@ -1,0 +1,22 @@
+
+Django
+
+Diseño responsivo y principios de experiencia de usuario (Voy a dar boostrap o algo asi)
+
+Oauth Y JWT
+
+Apis con Django
+
+El orm de django
+
+Bases de datos Postgres
+
+No relacional Celery y Redis
+
+Modelado de datos y migraciones
+
+Estrategas de herramientas de implementación (Docker y CI/CD)
+
+Heroku
+
+Supervisión y escalado

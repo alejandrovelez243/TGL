@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Lista de libros</title>
+</head>
+<body>
+    <a href="{% url 'vista_libro' %}">Redirige a libros basados en funciones</a>
+    <h1>Lista de libros</h1>
+    {% if False %}
+        <h1>Tag de if</h1>
+    {% endif %}
+
+    {{ context.user }}
+
+    <h1>Tag de for</h1>
+    {% for libro in libros %}
+        <p>{{libro}}</p>
+    {% endfor %}
+</body>
+</html>

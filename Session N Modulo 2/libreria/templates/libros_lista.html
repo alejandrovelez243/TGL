@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Lista de libros</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <h1>Lista de libros</h1>
+    {% if False %}
+        <h1>Tag de if</h1>
+    {% endif %}
+
+    {{ context.user }}
+
+    <h1>Tag de for</h1>
+    {% for libro in libros_list %}
+        <p>{{libro.titulo}} - {{libro.autor}}</p>
+    {% endfor %}
+</body>
+</html>
