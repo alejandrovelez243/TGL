@@ -7,5 +7,4 @@ class LibroAdmin(admin.ModelAdmin):
     list_display = ("titulo","autor", "publicado")
 
 
-
 admin.site.register(Libro, LibroAdmin)
