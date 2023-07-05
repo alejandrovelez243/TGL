@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_beat',
+    'django_celery_results',
     'customer',
     'rental',
     'film'
@@ -132,3 +134,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL="customer.Customer"
+
+
+# Aqui se define el cache de la app
+
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": "redis://127.0.0.1:6379/1",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#         }
+#     }
+# }
+
+
+# Configuracion celery
+# CELERY_RESULT_BACKEND = "django-db"
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' # Se puede usar de broker tambien rabbit mq, sqs (AWS)
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
+CELERY_BROKER_CONNECTION_RETRY=False
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP=True
+CELERY_BROKER_CONNECTION_MAX_RETRIES=10
