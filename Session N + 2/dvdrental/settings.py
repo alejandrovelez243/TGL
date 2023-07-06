@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-d)1+mvd2h@f9$u7h_^^jg)i@w=gy^ew#mu4f=d8apqw)lpn*4s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", True)
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -95,6 +95,11 @@ DATABASES = {
 }
 
 
+# if not DEBUG:
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -136,6 +141,8 @@ WHITENOISE_USE_FINDERS = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -160,7 +167,7 @@ AUTH_USER_MODEL="customer.Customer"
 
 # Configuracion celery
 # CELERY_RESULT_BACKEND = "django-db"
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' # Se puede usar de broker tambien rabbit mq, sqs (AWS)
+CELERY_BROKER_URL = os.getenv("REDIS_URL", 'redis://127.0.0.1:6379/0') # Se puede usar de broker tambien rabbit mq, sqs (AWS)
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
 CELERY_BROKER_CONNECTION_RETRY=False

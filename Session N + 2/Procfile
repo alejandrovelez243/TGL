@@ -1,1 +1,2 @@
 web: gunicorn dvdrental.wsgi
+worker: celery -A dvdrental worker --loglevel=info
