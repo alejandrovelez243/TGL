@@ -1,0 +1,3 @@
+https://devcenter.heroku.com/articles/getting-started-with-python#set-up
+https://devcenter.heroku.com/articles/deploying-python#expected-files-for-python
+https://www.geeksforgeeks.org/how-to-deploy-django-application-on-heroku/
